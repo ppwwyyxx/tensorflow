@@ -1702,9 +1702,9 @@ def cond(pred, fn1, fn2, name=None):
   result = tf.cond(x < y, lambda: tf.add(x, z), lambda: tf.square(y))
   ```
 
-  If x < y, the `tf.add` operation will be executed and tf.square
+  If x < y, the `tf.add` operation will be executed and `tf.square`
   operation will not be executed. Since z is needed for at least one
-  branch of the cond, the tf.mul operation is always executed, unconditionally.
+  branch of the cond, the `tf.multiply` operation is always executed, unconditionally.
   Although this behavior is consistent with the dataflow model of TensorFlow,
   it has occasionally surprised some users who expected a lazier semantics.
 
@@ -1772,7 +1772,7 @@ def cond(pred, fn1, fn2, name=None):
       raise ValueError("fn1 and fn2 must return the same number of results.")
     if not res_t:
       raise ValueError("fn1 and fn2 must return at least one result.")
-    for x, y in zip(res_f, res_t):
+      for x, y in zip(res_f, res_t):
       assert ((isinstance(x, ops.IndexedSlices) and
                isinstance(y, ops.IndexedSlices)) or
               (isinstance(x, sparse_tensor.SparseTensor) and
